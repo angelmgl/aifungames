@@ -1,3 +1,4 @@
+import { Alegreya_Sans } from "next/font/google";
 import "./globals.css";
 
 export const metadata = {
@@ -6,10 +7,15 @@ export const metadata = {
     // ver más opciones https://beta.nextjs.org/docs/api-reference/metadata
 };
 
+const font = Alegreya_Sans({
+    weight: ["400", "700"],
+    subsets: ["latin"],
+});
+
 export default function RootLayout({ children }) {
     return (
         <html lang="es">
-            <body>{children}</body>
+            <body className={font.className + " bg-gray-800"}>{children}</body>
         </html>
     );
 }

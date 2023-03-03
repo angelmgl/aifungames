@@ -1,7 +1,11 @@
+import Form from "@/components/Form";
+
 export default function Home() {
     return (
         <main>
-            <h1>AIFunGames</h1>
+            <div className="flex justify-center items-center h-screen">
+                <Form />
+            </div>
         </main>
     );
 }
