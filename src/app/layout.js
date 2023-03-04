@@ -1,3 +1,4 @@
+import { AnalyticsWrapper } from "@/components/Analytics";
 import { Alegreya_Sans } from "next/font/google";
 import "./globals.css";
 
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
                     </a>
                 </span>
                 {children}
+                <AnalyticsWrapper />
             </body>
         </html>
     );
