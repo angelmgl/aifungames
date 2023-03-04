@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Loader from "./Loader";
 import Result from "./Result";
 import Step from "./Step";
 
@@ -18,7 +19,8 @@ const initialForm = {
 export default function Form() {
     const [step, setStep] = useState(1);
     const [form, setForm] = useState(initialForm);
-    const [result, setResult] = useState("<p>Yo soy Kevin, una persona cobarde, pero también altruista. Siempre me ha acompañado el miedo a quedarme solo, motivo por el cual siempre he tratado de cuidar a mi acompañante Dahiana, el amor de mi vida. Yo creo en lo paranormal y siempre me he mantenido al tanto de todas las historias y leyendas acerca de este tema.</p>\n\n<p>Un día decidimos visitar La oficina de Girolabs, un lugar muy conocido por sus actividades paranormales. Al principio se presentaron los duendes malignos, lo que me provocó un gran miedo. Pero ese miedo cambió a terror cuando algunos fantasmas hicieron su aparición. Mi único pensamiento era proteger a mi acompañante a toda costa.</p>\n\n<p>La atmósfera cambió rápidamente y los fantasmas comenzaron a acercarse. Yo traté de proteger a Dahiana, quien se encontraba realmente aterrorizada. Empujé a los fantasmas con todas mis fuerzas tratando de encontrar una forma de escapar, pero ellos nos estaban rodeando y parecía que no había salida.</p>\n\n<p>Finalmente, me dejé caer al suelo y comencé a orar. En ese momento una luz cegadora me envolvió y los fantasmas desaparecieron. Yo sabía que mi altruismo me había salvado una vez más. Cuando me levanté, mi acompañante me abrazó y me dijo que habíamos vuelto a salir con vida.</p>");
+    const [result, setResult] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const handleNext = (e) => setStep(step + 1);
 
@@ -32,6 +34,7 @@ export default function Form() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            setLoading(true);
             const response = await fetch("/api/generate", {
                 method: "POST",
                 headers: {
@@ -49,9 +52,11 @@ export default function Form() {
             }
 
             setResult(data.result);
+            setLoading(false);
         } catch (error) {
             // Consider implementing your own error handling logic here
             console.error(error);
+            setLoading(false);
         }
     };
 
@@ -63,7 +68,9 @@ export default function Form() {
             <h1 className="text-4xl text-center mb-8 font-bold text-white">
                 Tu historia de horror
             </h1>
-            {result ? (
+            {loading ? (
+                <Loader />
+            ) : result ? (
                 <Result result={result} />
             ) : (
                 <div>
