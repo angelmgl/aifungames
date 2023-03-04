@@ -20,3 +20,7 @@
         transform: translateY(0);
     }
 }
+
+.spaced-paragraphs p {
+    margin-bottom: 14px;
+}

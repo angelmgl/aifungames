@@ -106,7 +106,7 @@ export default function Form() {
                         question="Elige una persona que te acompañe ¿Quién es?"
                         placeholder="Alondra, mi novia"
                         name="partner"
-                        maxLength={30}
+                        maxLength={40}
                     />
                     <Step
                         step={step}
@@ -119,7 +119,7 @@ export default function Form() {
                         question="¿Cuál es tu peor miedo?"
                         placeholder="¿Arañas? ¿Asesinos? ¿Payasos?"
                         name="fear"
-                        maxLength={15}
+                        maxLength={40}
                     />
                     <Step
                         step={step}
@@ -157,26 +157,13 @@ export default function Form() {
                         index={7}
                         form={form}
                         handlePrev={handlePrev}
-                        handleNext={handleNext}
+                        handleSubmit={handleSubmit}
                         handleChange={handleChange}
                         type="text"
                         question="¿En qué lugar deseas que transcurra la historia?"
                         placeholder="¿Un cementerio? ¿Un hotel? ¿Tu casa?"
                         name="place"
                         maxLength={50}
-                    />
-                    <Step
-                        step={step}
-                        index={8}
-                        form={form}
-                        handlePrev={handlePrev}
-                        handleSubmit={handleSubmit}
-                        handleChange={handleChange}
-                        type="text"
-                        question="¿En qué ciudad o pueblo vives?"
-                        placeholder="Capiatá"
-                        name="city"
-                        maxLength={20}
                         last={true}
                     />
                 </div>

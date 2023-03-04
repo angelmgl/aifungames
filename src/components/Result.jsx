@@ -1,5 +1,5 @@
 export default function Result({ result }) {
     return (
-        <p>{result}</p>
+        <div className="text-white spaced-paragraphs" dangerouslySetInnerHTML={{__html: result}} />
     )
 }
