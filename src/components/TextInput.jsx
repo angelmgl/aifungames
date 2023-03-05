@@ -6,6 +6,7 @@ export default function TextInput({
     placeholder,
     maxLength,
     handleChange,
+    next,
 }) {
     return (
         <input
@@ -17,6 +18,9 @@ export default function TextInput({
             placeholder={placeholder}
             maxLength={maxLength}
             onChange={(e) => handleChange(e)}
+            onKeyDown={(e) => {
+                if (e.key === "Enter") next(e)
+            }}
         />
     );
 }

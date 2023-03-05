@@ -31,6 +31,7 @@ export default function Step({
                     placeholder={placeholder}
                     maxLength={maxLength}
                     handleChange={handleChange}
+                    next={handleNext ? handleNext : handleSubmit}
                 />
             ) : (
                 <OptionsInput

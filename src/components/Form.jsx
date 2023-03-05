@@ -24,7 +24,10 @@ export default function Form() {
 
     const handleNext = (e) => setStep(step + 1);
 
-    const handlePrev = (e) => setStep(step - 1);
+    const handlePrev = (e) => {
+        if (step > 1) setStep(step - 1);
+        return false;
+    };
 
     const handleChange = (e) => {
         let name = e.target.name;
